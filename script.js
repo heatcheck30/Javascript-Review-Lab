@@ -1,3 +1,9 @@
+//Avoid using var when declaring variables
+//use let if you know the value will be changed
+//use const for arrays, functions, or any value you know will not change
+
+
+
 // /*
 // A. Q + A
 // 1. How do we assign a value to a variable? 
@@ -71,6 +77,11 @@
 //   console.log(false && false && false && false && false || true);
 //   console.log(false == false)
 //   console.log(e === 'Kevin');
+
+//with arithmetic
+//   console.log(a + b === c); 
+//   console.log(a * a === d);
+
 //   console.log(a == a || a < d); // note: the answer is a simple arithmetic equation, not something "weird"
 //   console.log(48 == '48');
 
@@ -238,6 +249,9 @@ console.log(randomThings)
 const ourClass = ["Salty", "Zoom", "Sardine", "Slack", "Github"]
 console.log(ourClass[2]);
 // Change the value of "Github" to "Octocat"
+//you can change the value of last item in array like this too
+ourClass[ourClass.length - 1] = 'Octocat';
+
 ourClass[4] = "Octocat";
 console.log(ourClass[4]);
 // Add a new element, "Cloud City" to the array
@@ -383,6 +397,8 @@ console.log([thomsCloset[1][1]])
 console.log([thomsCloset[2][1]])
 //7.Log a sentence about what Thom's wearing. Example: "Thom is looking fierce in a grey button-up, jeans and wool scarf!"
 
+//template literals might make like easier for you for string statements
+console.log(`Thom is looking fierce in a ${thomsCloset[0][0]}, ${thomsCloset[1][1]}, and a ${thomsCloset[2][1]}`)
 
 
 console.log("Thom is looking fierce in a " + thomsCloset[0][0] + ", " + thomsCloset[1][1] + ", and " + thomsCloset[2][1] + "!" );
@@ -410,12 +426,17 @@ console.log(calculateCube(5));
 
 //D.isVowel
 //Write a function isVowel that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise. The vowel could be upper or lower case. Test your function on every vowel and make sure it's working. In general, when you write functions, take a minute to test them with different values to make sure they behave the way you want
+
+//you can reduce your vowel array by using toLowerCase()
+//see below edit
+
 function isVowel(character) {
     if (character.length !== 1) {
     console.log("Please write only 1 character.")
     } else {
-        const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
-        return vowels.includes(character)
+        const lower = character.toLowerCase()
+        const vowels = ["a", "e", "i", "o", "u"]
+        return vowels.includes(lower)
     }
 }
 //////
@@ -459,6 +480,9 @@ console.log(maxOfThree(6, 9, 1));
 /////
 //H.printLongestWord
 //Write a function printLongestWord that accepts a single argument, an array of strings. The method should return the longest word in the array. In case of a tie, the method should return the word that appears first in the array.
+
+//Nice use of reduce()!!!
+
 const printLongestWord =  (arrayOfStrings) => {
  const result = arrayOfStrings.reduce((currentWinner, nextWord) => {
  if (currentWinner.length >= nextWord.length){
